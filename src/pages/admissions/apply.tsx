@@ -59,12 +59,12 @@ const Apply = () => {
     try {
       const formDataToSend = { ...formData };
 
-      if (!formData.recentSchoolResult) {
-        return toast.error("pleas upload your child's recent school result");
+      if (!formData.passportPhotograph) {
+        return toast.error("please upload your child's passport photograph");
       }
 
-      if (!formData.passportPhotograph) {
-        return toast.error("pleas upload your child's passport photograph");
+      if (!formData.recentSchoolResult) {
+        return toast.error("please upload your child's recent school result");
       }
 
       const filesToUpload = [
@@ -80,7 +80,7 @@ const Apply = () => {
           fileData.append("file", file);
 
           const uploadResponse = await fetch(
-            process.env.NEXT_PUBLIC_BACKEND_URL + "/upload",
+            process.env.NEXT_PUBLIC_BACKEND_URL + "upload",
             {
               method: "POST",
               body: fileData,
