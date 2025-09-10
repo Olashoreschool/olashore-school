@@ -1,5 +1,4 @@
 import Image from "next/image";
-import signature from "/public/images/about/signature.jpeg";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Hero from "@/components/Hero";
@@ -45,10 +44,11 @@ const PrincipalsWelcome = ({
                   }}
                 />
                 <Image
-                  src={signature}
-                  alt="vp-signature"
+                  src={data.sections[0].image_left}
+                  alt={data.sections[0].name + " signature"}
                   width={100}
-                  className="mt-10 mb-6"
+                  height={100}
+                  className="mt-10 mb-6 mix-blend-mode-multiply"
                 />
                 <p>
                   <strong>{data.sections[0].name}</strong>
