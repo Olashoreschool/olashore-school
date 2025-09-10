@@ -1,5 +1,5 @@
 import Image from "next/image";
-import signature from "/public/images/about/signature-vp.png";
+import signature from "/public/images/about/signature.jpeg";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Hero from "@/components/Hero";
