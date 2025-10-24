@@ -27,6 +27,8 @@ const Alumni = ({
 
   const files = useMemo(() => data.sections[0].files || [], [data.sections]);
 
+  console.log(files, "files...");
+
   return (
     <>
       <NextSeo title="Alumni - Olashore International School" />
@@ -55,7 +57,7 @@ const Alumni = ({
                 <iframe
                   src={`https://drive.google.com/file/d/${getFileIdFromUrl(
                     fileUrl
-                  )}/preview`}
+                  )}/preview?usp=embed_googleplus`}
                   height="250"
                   className="w-[480px] md:w-[350px] xl:w-[550px] rounded-t-xl overflow-hidden pointer-events-none"
                   style={{
