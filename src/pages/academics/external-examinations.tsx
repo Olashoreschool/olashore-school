@@ -34,7 +34,7 @@ const ExternalExamination = ({
           ]}
         />
 
-        <section className="   container mx-auto p-4 xl:px-16 mb-4 lg:mb-8">
+        <section className="container mx-auto p-4 xl:px-16 mb-4 lg:mb-8">
           <div
             dangerouslySetInnerHTML={{
               __html: data.sections[0].text,
@@ -42,7 +42,7 @@ const ExternalExamination = ({
           />
         </section>
 
-        <section className="   container mx-auto p-4 xl:px-16 mb-4 lg:mb-8">
+        <section className="container mx-auto p-4 xl:px-16 mb-4 lg:mb-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <aside
               dangerouslySetInnerHTML={{
@@ -61,7 +61,7 @@ const ExternalExamination = ({
           </div>
         </section>
 
-        <section className="   container mx-auto p-4 xl:px-16 mb-4 lg:mb-8">
+        <section className="container mx-auto p-4 xl:px-16 mb-4 lg:mb-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <aside>
               <Image
@@ -81,7 +81,7 @@ const ExternalExamination = ({
           </div>
         </section>
 
-        <section className="   container mx-auto p-4 xl:px-16 mb-4 lg:mb-8">
+        <section className="container mx-auto p-4 xl:px-16 mb-4 lg:mb-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <aside
               dangerouslySetInnerHTML={{
@@ -97,6 +97,26 @@ const ExternalExamination = ({
                 className="rounded-lg"
               />
             </aside>
+          </div>
+        </section>
+
+        <section className="container mx-auto p-4 xl:px-16 mb-4 lg:mb-8">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <aside>
+              <Image
+                src={data.sections[4].image_left}
+                alt={data.heading}
+                width={600}
+                height={600}
+                className="rounded-lg"
+              />
+            </aside>
+
+            <aside
+              dangerouslySetInnerHTML={{
+                __html: data.sections[4].text_right,
+              }}
+            />
           </div>
         </section>
       </div>

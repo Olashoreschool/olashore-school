@@ -1,10 +1,10 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Hero from "@/components/Hero";
-import getFileNameFromGoogleDriveLink from "@/utils/getFileNameFromGoogleDriveLink";
+import { IconArrowUpRight } from "@tabler/icons-react";
 import type { InferGetServerSidePropsType } from "next";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 export const getServerSideProps = async () => {
   const endpoint = process.env.BACKEND_URL + "content/newsletter";
@@ -17,22 +17,6 @@ const Newsletter = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const sections = useMemo(() => data.sections || [], [data.sections]);
-  const [fileNames, setFileNames] = useState<string[]>([]);
-
-  useEffect(() => {
-    const fetchFileNames = async () => {
-      const names = await Promise.all(
-        sections.flatMap((section: any) =>
-          section.files.map((fileUrl: string) =>
-            getFileNameFromGoogleDriveLink(fileUrl)
-          )
-        )
-      );
-      setFileNames(names);
-    };
-
-    fetchFileNames();
-  }, [sections]);
 
   return (
     <>
@@ -72,7 +56,8 @@ const Newsletter = ({
                       className="hover:text-[var(--secondary-color)]"
                     >
                       <Link href={fileUrl} target="_blank">
-                        {fileNames[idx]}
+                        {section.title} ({idx + 1})
+                        <IconArrowUpRight className="size-6 inline-block ml-2" />
                       </Link>
                     </li>
                   ))}

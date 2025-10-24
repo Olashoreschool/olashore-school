@@ -2,10 +2,14 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Hero from "@/components/Hero";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
-
-import getFileNameFromGoogleDriveLink from "@/utils/getFileNameFromGoogleDriveLink";
 import type { InferGetServerSidePropsType } from "next";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
+
+// Helper function to extract file ID from Google Drive URL
+const getFileIdFromUrl = (url: string): string => {
+  const match = url.match(/\/file\/d\/([a-zA-Z0-9-_]+)/);
+  return match ? match[1] : url;
+};
 
 export const getServerSideProps = async () => {
   const endpoint = process.env.BACKEND_URL + "content/magazine";
@@ -21,20 +25,6 @@ const Magazine = ({
     () => data.sections[0].files || [],
     [data.sections]
   );
-  const [fileNames, setFileNames] = useState<string[]>([]);
-
-  useEffect(() => {
-    const fetchFileNames = async () => {
-      const names = await Promise.all(
-        magazines.map((fileUrl: string) =>
-          getFileNameFromGoogleDriveLink(fileUrl)
-        )
-      );
-      setFileNames(names);
-    };
-
-    fetchFileNames();
-  }, [magazines]);
 
   return (
     <>
@@ -62,7 +52,9 @@ const Magazine = ({
                 className="flex flex-col justify-center lg:items-center"
               >
                 <iframe
-                  src={`${fileUrl}?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}
+                  src={`https://drive.google.com/file/d/${getFileIdFromUrl(
+                    fileUrl
+                  )}/preview`}
                   height="250"
                   className="w-[480px] md:w-[350px] xl:w-[550px] rounded-t-xl overflow-hidden pointer-events-none"
                   style={{
@@ -75,7 +67,7 @@ const Magazine = ({
 
                 <div className="flex items-center justify-between p-6 border shadow w-[480px] md:w-[350px] xl:w-[550px] rounded-b-xl">
                   <div className="space-y-6">
-                    <h5> {fileNames[index]}</h5>
+                    <h5>Magazine {index + 1}</h5>
                     <Link
                       href={`${fileUrl}`}
                       className="text-sm text-grey underline"
