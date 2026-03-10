@@ -50,6 +50,7 @@ const Contact = () => {
                   <input
                     type="text"
                     name="Name"
+                    id="name"
                     placeholder="Your Name"
                     required
                     className="outline-none border-none text-black p-3 rounded-md text-sm tracking-[1.5px]"
@@ -64,6 +65,7 @@ const Contact = () => {
                   <input
                     type="email"
                     name="Email"
+                    id="email"
                     placeholder="Your Email"
                     required
                     className="outline-none border-none text-black p-3 rounded-md text-sm tracking-[1.5px]"
@@ -78,6 +80,7 @@ const Contact = () => {
                   <input
                     type="text"
                     name="Subject"
+                    id="subject"
                     placeholder="Subject"
                     required
                     className="outline-none border-none text-black p-3 rounded-md text-sm tracking-[1.5px]"

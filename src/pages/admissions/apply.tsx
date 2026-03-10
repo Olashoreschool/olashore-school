@@ -67,6 +67,20 @@ const Apply = () => {
         return toast.error("please upload your child's recent school result");
       }
 
+      if (
+        formData.preferredExamLocation === "others" &&
+        !formData.OtherPreferredExamLocation.trim()
+      ) {
+        return toast.error("please specify preferred examination location");
+      }
+
+      if (
+        formData.howDidYouKnowAboutOIS === "others" &&
+        !formData.otherReferralSource.trim()
+      ) {
+        return toast.error("please specify how you heard about OIS");
+      }
+
       const filesToUpload = [
         formData.passportPhotograph,
         formData.childBirthCertificate,
@@ -211,13 +225,14 @@ const Apply = () => {
                     <option value="">Please select</option>
                     <option value="year-7">Year 7 (JSS 1)</option>
                     <option value="year-8">Year 8 (JSS 2)</option>
-                    <option value="year-8">Year 9 (JSS 3)</option>
-                    <option value="year-8">Year 10 (SS 1)</option>
-                    <option value="year-8">Year 11 (SS 2)</option>
+                    <option value="year-9">Year 9 (JSS 3)</option>
+                    <option value="year-10">Year 10 (SS 1)</option>
+                    <option value="year-11">Year 11 (SS 2)</option>
+                    <option value="year-12">Year 12 (SS 3)</option>
                   </select>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <label htmlFor="child-surname">
+                  <label htmlFor="surname">
                     Child&apos;s Surname <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -480,7 +495,7 @@ const Apply = () => {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  <label htmlFor="desired-class">
+                  <label htmlFor="preferred-exam-location">
                     Preferred Entrance Examination Location{" "}
                     <span className="text-red-500">*</span>
                   </label>
@@ -489,6 +504,7 @@ const Apply = () => {
                     id="preferred-exam-location"
                     value={formData.preferredExamLocation}
                     onChange={handleInputChange}
+                    required
                     className="bg-[#EFF1F6] outline-none border-none text-black p-3 rounded-md text-sm tracking-[1.5px]"
                   >
                     <option value="">Please select</option>
@@ -496,22 +512,23 @@ const Apply = () => {
                     <option value="ibadan">Ibadan</option>
                     <option value="lagos">Lagos</option>
                     <option value="port-harcourt">Port Harcourt</option>
-                    <option value="warri">Year 11 (SS 2)</option>
+                    <option value="warri">Warri</option>
                     <option value="abuja">Abuja</option>
                     <option value="others">Others</option>
                   </select>
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  <label htmlFor="current-school-address">
+                  <label htmlFor="other-preferred-exam-location">
                     If others was ticked, Please specify
                   </label>
                   <input
                     type="text"
                     name="OtherPreferredExamLocation"
-                    id="preferred-exam-location"
+                    id="other-preferred-exam-location"
                     value={formData.OtherPreferredExamLocation}
                     onChange={handleInputChange}
+                    required={formData.preferredExamLocation === "others"}
                     className="bg-[#EFF1F6] outline-none border-none text-black p-3 rounded-md text-sm tracking-[1.5px]"
                   />
                 </div>
@@ -577,6 +594,7 @@ const Apply = () => {
                     id="other-referral-source"
                     value={formData.otherReferralSource}
                     onChange={handleInputChange}
+                    required={formData.howDidYouKnowAboutOIS === "others"}
                     className="bg-[#EFF1F6] outline-none border-none text-black p-3 rounded-md text-sm tracking-[1.5px]"
                   />
                 </div>
@@ -656,7 +674,7 @@ const Apply = () => {
 
                   <div className="flex flex-col gap-4">
                     <label
-                      htmlFor="child-birth-certificate"
+                      htmlFor="recent-school-result"
                       className="font-semibold"
                     >
                       Recent School Result{" "}

@@ -100,7 +100,7 @@ const BookACampusTour = () => {
               className=" text-black space-y-10"
             >
               <div className="flex flex-col gap-4">
-                <label htmlFor="first-name">Full Name</label>
+                <label htmlFor="full-name">Full Name</label>
                 <input
                   type="text"
                   name="fullName"
@@ -149,7 +149,7 @@ const BookACampusTour = () => {
                 />
               </div>
               <div className="flex flex-col gap-4">
-                <label htmlFor="preferred-date">Preferred Time</label>
+                <label htmlFor="preferred-time">Preferred Time</label>
                 <input
                   type="time"
                   name="time"
@@ -161,7 +161,7 @@ const BookACampusTour = () => {
                 />
               </div>
               <div className="flex flex-col gap-4">
-                <label htmlFor="contact-number">No of Participants</label>
+                <label htmlFor="no-of-participants">No of Participants</label>
                 <input
                   type="number"
                   min={1}
@@ -175,7 +175,7 @@ const BookACampusTour = () => {
               </div>
 
               <div className="flex flex-col gap-4">
-                <label htmlFor="contact-number">Extra comment</label>
+                <label htmlFor="extra-comment">Extra comment</label>
                 <textarea
                   name="comment"
                   id="extra-comment"
